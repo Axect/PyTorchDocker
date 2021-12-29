@@ -14,19 +14,19 @@ RUN sed -i 's@archive.ubuntu.com@mirror.kakao.com@g' /etc/apt/sources.list
 ARG USER_ID
 ARG GROUP_ID
 
-RUN addgroup --gid $GROUP_ID rakhan
-RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID rakhan
+RUN addgroup --gid $GROUP_ID quokka
+RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID quokka
 RUN apt update && apt upgrade -y
 RUN apt install -y sudo
-RUN echo 'rakhan ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN echo 'quokka ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # ==============================================================================
-# Change permission of /opt/conda to rakhan
+# Change permission of /opt/conda to quokka
 # ==============================================================================
-RUN chown -R rakhan:rakhan /opt/conda
+RUN chown -R quokka:quokka /opt/conda
 
-USER rakhan
-WORKDIR /home/rakhan
+USER quokka
+WORKDIR /home/quokka
 
 # ==============================================================================
 # Build Essential
